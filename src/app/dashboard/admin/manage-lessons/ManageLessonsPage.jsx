@@ -23,7 +23,7 @@ import {
 
 
 
-const ManageLessonPage = ({ lessonData, userReports }) => {
+const ManageLessonPage = ({ lessonData, report }) => {
   const [lessons, setLessons] = useState(lessonData?.allLessons || []);
 
   const [categoryFilter, setCategoryFilter] = useState("all");
@@ -204,7 +204,7 @@ const ManageLessonPage = ({ lessonData, userReports }) => {
               Public Lessons
             </p>
             <h3 className="text-2xl font-black font-mono text-zinc-200 mt-1">
-              {userReports}
+              {publicCount.length}
             </h3>
             <p className="text-[10px] text-purple-400 font-medium mt-1">✓ Active Catalog</p>
           </div>
@@ -234,7 +234,7 @@ const ManageLessonPage = ({ lessonData, userReports }) => {
               Pending Reports
             </p>
             <h3 className="text-2xl font-black font-mono text-rose-400 mt-1">
-              {flaggedCount.length}
+              {report.length}
             </h3>
             <p className="text-[10px] text-rose-400/80 font-medium mt-1">⚠️ Action Required</p>
           </div>

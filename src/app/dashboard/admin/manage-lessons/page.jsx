@@ -1,15 +1,15 @@
 import React from 'react';
 import ManageLessonPage from './ManageLessonsPage';
 import { showLessons } from '@/lib/api/lessons';
-import { getUserReports } from '@/lib/api/admin';
+import { fetchReports, getUserReports } from '@/lib/api/admin';
 
 const ManageLesson = async () => {
 
   const lessonData = await showLessons(); 
-  const userReports = await getUserReports();
-  const userReportsCount = userReports?.data.length || 0;
+  const allReports = await fetchReports()
+     const report = allReports?.data || 0;
 
-  return <ManageLessonPage lessonData={lessonData} userReports={userReportsCount} />;
+  return <ManageLessonPage lessonData={lessonData} report={report} />;
 };
 
 export default ManageLesson;
