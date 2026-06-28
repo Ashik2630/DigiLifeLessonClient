@@ -23,7 +23,7 @@ import {
 
 
 
-const ManageLessonPage = ({ lessonData }) => {
+const ManageLessonPage = ({ lessonData, userReports }) => {
   const [lessons, setLessons] = useState(lessonData?.allLessons || []);
 
   const [categoryFilter, setCategoryFilter] = useState("all");
@@ -168,6 +168,8 @@ const ManageLessonPage = ({ lessonData }) => {
     return matchCategory && matchVisibility && matchStatus;
   });
 
+  
+
   return (
     <div className="p-6 sm:p-10 min-h-screen bg-[#040712] text-zinc-100 relative overflow-hidden">
       {/* Ambient Radial Backgrounds */}
@@ -202,7 +204,7 @@ const ManageLessonPage = ({ lessonData }) => {
               Public Lessons
             </p>
             <h3 className="text-2xl font-black font-mono text-zinc-200 mt-1">
-              {publicCount.length}
+              {userReports}
             </h3>
             <p className="text-[10px] text-purple-400 font-medium mt-1">✓ Active Catalog</p>
           </div>

@@ -94,3 +94,9 @@ export const deleteLessonAdmin = async (id) => {
   const res = await fetch(`${baseUrl}/api/lessons/${id}`, { method: "DELETE" });
   return res.json();
 };
+
+// রিপোর্ট ফেচ
+export const fetchReports = async () => {
+  const res = await fetch(`${baseUrl}/api/reports`, { cache: "no-store" });
+  return res.json();
+}
