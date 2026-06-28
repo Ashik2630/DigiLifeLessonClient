@@ -20,40 +20,71 @@ import {
 } from "lucide-react";
 import toast, { Toaster } from "react-hot-toast";
 
-// Mock data for user's lessons
+// Mock data for user's lessons tailored for Digital Life Lessons (Book of Wisdom)
 const mockLessons = [
   {
-    id: "1",
-    title: "Embracing Failure as a Stepping Stone",
+    id: "6a394df969db5d455f5a7864", // আপনার রিয়েল মঙ্গোডিবি আইডির মতো ফরম্যাট করা
+    title: "Unlocking Discipline in a World of Distractions",
     description:
-      "I used to fear failure more than anything. It wasn't until I hit rock bottom that I realized failure is just feedback in disguise. Here is what I learned...",
-    category: "Personal Growth",
-    emotionalTone: "Realization",
-    createdAt: "2026-06-21",
-    accessLevel: "Free",
-    likesCount: 124,
-  },
-  {
-    id: "2",
-    title: "The Art of Saying No",
-    description:
-      "For years, I was a chronic people-pleaser. Saying yes to everything meant saying no to my own priorities. Learning this one word changed my life...",
+      "Motivation gets you through the first week; structure and brutal self-discipline carry you through the next year. I had to delete all social media for 30 days to realize how much of 'me' was missing...",
     category: "Mindset",
-    emotionalTone: "Motivational",
-    createdAt: "2026-06-18",
-    accessLevel: "Premium",
-    likesCount: 342,
+    emotionalTone: "Realization",
+    createdAt: "2026-06-28",
+    accessLevel: "Free",
+    likesCount: 542,
+    postedBy: {
+      name: "Md. Ashik",
+      avatar:
+        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80",
+    },
   },
   {
-    id: "3",
-    title: "Navigating Career Transitions",
+    id: "6a394df969db5d455f5a7865",
+    title: "The Financial Trauma of My First Failed Startup",
     description:
-      "Switching careers at 30 was the most terrifying and rewarding experience. This lesson outlines the actionable steps I took to pivot successfully...",
-    category: "Career",
+      "When the server went down and the bank account hit zero, the silence was deafening. But looking back, that $10,000 failure taught me more about cash flow and human psychology than any Ivy League degree ever could.",
+    category: "Finance",
+    emotionalTone: "Reflection",
+    createdAt: "2026-06-24",
+    accessLevel: "Premium",
+    likesCount: 1205,
+    postedBy: {
+      name: "Iron Wave",
+      avatar:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80",
+    },
+  },
+  {
+    id: "6a394df969db5d455f5a7866",
+    title: "The Earthquake in Bangladesh: A Lesson on Impermanence",
+    description:
+      "As the ceiling fan shook and bricks rattled, I didn't think about my pending GitHub commits or my bank balance. I just wanted to hold my mother's hand. Nature has a terrifying way of resetting our priorities instantly.",
+    category: "Philosophy",
     emotionalTone: "Gratitude",
-    createdAt: "2026-06-15",
+    createdAt: "2026-06-22",
     accessLevel: "Free",
-    likesCount: 89,
+    likesCount: 890,
+    postedBy: {
+      name: "Anonymous",
+      avatar:
+        "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80",
+    },
+  },
+  {
+    id: "6a394df969db5d455f5a7867",
+    title: "Breaking the Loop of Digital Burnout",
+    description:
+      "Working 14 hours a day remotely made me a ghost in my own home. I was physically present but mentally trapped in Slack channels. This is the exact routine I used to reclaim my evenings and my mental peace.",
+    category: "Personal Growth",
+    emotionalTone: "Motivational",
+    createdAt: "2026-06-15",
+    accessLevel: "Premium",
+    likesCount: 431,
+    postedBy: {
+      name: "Ashikur Rahman",
+      avatar:
+        "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=100&q=80",
+    },
   },
 ];
 
@@ -421,7 +452,11 @@ const ProfileCardClient = () => {
                 Lessons you have shared with the community
               </p>
             </div>
-            <Link href={`/public-lessons`} variant="light" className="text-purple-400 font-medium">
+            <Link
+              href={`/public-lessons`}
+              variant="light"
+              className="text-purple-400 font-medium"
+            >
               View All
             </Link>
           </div>
