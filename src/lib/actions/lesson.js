@@ -1,5 +1,7 @@
 'use server';
 
+import { revalidatePath } from "next/cache";
+
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const createLesson = async (newLessonData) => {
@@ -43,7 +45,7 @@ export async function updateLessonAction(lessonId, updatedData) {
 //  লেসন ডিলিট করার Server Action
 export async function deleteLessonAction(lessonId) {
   try {
-    const response = await fetch(`${BACKEND_API_URL}/api/lessons/${lessonId}`, {
+    const response = await fetch(`${baseUrl}/api/lessons/${lessonId}`, {
       method: "DELETE",
     });
 
@@ -53,10 +55,9 @@ export async function deleteLessonAction(lessonId) {
       throw new Error(data.message || "Failed to delete lesson from backend");
     }
 
-    // ডিলিট হওয়ার পর পেজটি রিফ্রেশ বা ক্যাশ ডিলিট করার জন্য
-    revalidatePath("/dashboard/user/my-lessons"); 
-    
-    return { success: true, message: data.message };
+    revalidatePath("/dashboard/user/my-lessons");
+
+    return { success: true, message: data.message || "Lesson deleted successfully." };
   } catch (error) {
     console.error("Delete Action Error:", error);
     return { success: false, error: error.message };

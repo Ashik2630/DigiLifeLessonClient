@@ -7,6 +7,7 @@ import { Button } from "@heroui/react";
 import { Plus, Pencil, TrashBin, Heart } from "@gravity-ui/icons";
 import { ChartAreaIcon } from "lucide-react";
 import { getSession } from "@/lib/actions/core/getSession";
+import DeleteLessonButton from "@/components/dashboard/DeleteLessonButton";
 
 const MyLessonPage = async () => {
   const user = await getSession();
@@ -189,14 +190,7 @@ const MyLessonPage = async () => {
                           <Pencil width={13} height={13} />
                         </Button>
                       </Link>
-                      <Button
-                        isIconOnly
-                        variant="light"
-                        size="sm"
-                        className="text-zinc-400 hover:text-rose-400 hover:bg-zinc-900 border border-zinc-900 hover:border-zinc-800 rounded-lg w-8 h-8 min-w-8 p-0 transition-all duration-200"
-                      >
-                        <TrashBin width={13} height={13} />
-                      </Button>
+                      <DeleteLessonButton lessonId={lesson?._id} />
                     </div>
                   </div>
                 );
