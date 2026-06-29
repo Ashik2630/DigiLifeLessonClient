@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSession } from "@/lib/auth-client";
 import { Button } from "@heroui/react";
+import Swal from "sweetalert2";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "";
 
@@ -178,6 +179,15 @@ useEffect(() => {
   // Submit report
   const handleReportSubmit = async (e) => {
     e.preventDefault();
+    if (!isLoggedIn) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "You must be logged in to report a lesson.",
+      });
+      setShowReportModal(false);
+      return;
+    }
     if (!reportReason || reportLoading) return;
     setReportLoading(true);
     try {
@@ -186,21 +196,45 @@ useEffect(() => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           lessonId: lesson._id,
-          userId: currentUser?.id || null,
-          userEmail: currentUser?.email || null,
+          userId: currentUser?.id || currentUser?._id || "unknown", // Fallback if id is missing
+          userEmail: currentUser?.email || "unknown@example.com",
           reason: reportReason,
+          details: "Reported from client", // Add details since backend might expect it or it's good practice
           createdAt: new Date(),
         }),
       });
-      const responseBody = await res.json().catch(() => null);
+      
+      const responseText = await res.text();
+      console.log("Raw response from /api/reports:", responseText);
+      console.log("Response status:", res.status);
+      
+      let responseBody = null;
+      try {
+        responseBody = JSON.parse(responseText);
+      } catch (parseError) {
+        console.error("Failed to parse response as JSON:", parseError);
+      }
+
       if (!res.ok) {
-        const message = responseBody?.message || "Report failed";
+        const message = responseBody?.message || `Report failed (Status: ${res.status})`;
         throw new Error(message);
       }
+      
+      Swal.fire({
+        icon: "success",
+        title: "Report Submitted",
+        text: "Your report has been successfully submitted.",
+      });
+
       setShowReportModal(false);
       setReportReason("");
     } catch (err) {
       console.error("Report failed:", err);
+      Swal.fire({
+        icon: "error",
+        title: "Report Failed",
+        text: err.message || "Something went wrong!",
+      });
     } finally {
       setReportLoading(false);
     }
