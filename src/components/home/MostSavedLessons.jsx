@@ -5,7 +5,13 @@ import { motion } from "framer-motion";
 import { FolderHeart, Bookmark, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
-export default function MostSavedLessons({ lessons }) {
+export default function MostSavedLessons({ mostSavedLessons = [] }) {
+  const lessons = Array.isArray(mostSavedLessons) ? mostSavedLessons : [];
+
+  if (!lessons.length) {
+    return null;
+  }
+
   return (
     <section className="py-12 bg-[#040712] text-zinc-100 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
@@ -23,11 +29,18 @@ export default function MostSavedLessons({ lessons }) {
 
         {/* Lessons List */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {lessons?.map((item) => {
-            const lesson = item.lessonDetails;
+          {lessons.map((item) => {
+            const lesson = item?.lessonDetails || {};
+            const lessonId = item?._id || lesson?._id;
+            const title = lesson?.title || "Untitled lesson";
+            const category = lesson?.category || "General";
+            const image = lesson?.image || "";
+            const userName = lesson?.userName || "Admin";
+            const userImage = lesson?.userImage || "/avatar.png";
+
             return (
               <motion.div
-                key={item._id}
+                key={lessonId}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -36,38 +49,38 @@ export default function MostSavedLessons({ lessons }) {
               >
                 {/* Image Banner */}
                 <div className="h-40 w-full bg-zinc-900 overflow-hidden relative">
-                  {lesson.image ? (
-                    <img src={lesson.image} alt={lesson.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  {image ? (
+                    <img src={image} alt={title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-zinc-600 text-3xl">📄</div>
                   )}
                   {/* Saved Count Badge */}
                   <span className="absolute top-3 right-3 inline-flex items-center gap-1 text-[10px] font-mono font-bold bg-[#040712]/80 text-fuchsia-400 backdrop-blur-sm px-2.5 py-1 rounded-xl border border-fuchsia-950">
                     <Bookmark className="w-3 h-3 fill-fuchsia-400" />
-                    {item.savedCount} Saves
+                    {item?.savedCount ?? 0} Saves
                   </span>
                 </div>
 
                 {/* Content Details */}
                 <div className="p-5 flex flex-col grow">
                   <span className="text-[9px] font-bold text-fuchsia-400 uppercase tracking-widest block mb-1">
-                    {lesson.category || "General"}
+                    {category}
                   </span>
                   <h3 className="font-bold text-sm text-zinc-200 line-clamp-2 mb-3 group-hover:text-zinc-100 min-h-10">
-                    {lesson.title}
+                    {title}
                   </h3>
 
                   {/* Author Meta */}
                   <div className="mt-auto pt-4 border-t border-zinc-950 flex items-center justify-between">
                     <div className="flex items-center gap-2 min-w-0">
                       <div className="w-5 h-5 rounded-full bg-zinc-800 overflow-hidden shrink-0">
-                        <img src={lesson.userImage || "/avatar.png"} alt={lesson.userName} className="w-full h-full object-cover" />
+                        <img src={userImage} alt={userName} className="w-full h-full object-cover" />
                       </div>
-                      <span className="text-[11px] text-zinc-500 truncate font-medium">{lesson.userName || "Admin"}</span>
+                      <span className="text-[11px] text-zinc-500 truncate font-medium">{userName}</span>
                     </div>
                     
                     <Link 
-                      href={`/public-lessons/${item._id}`}
+                      href={`/public-lessons/${lessonId}`}
                       className="p-1.5 bg-zinc-900/60 text-zinc-400 group-hover:text-fuchsia-400 group-hover:bg-fuchsia-950/30 rounded-lg border border-zinc-850 group-hover:border-fuchsia-900/50 transition-all"
                     >
                       <ArrowRight className="w-3.5 h-3.5" />
