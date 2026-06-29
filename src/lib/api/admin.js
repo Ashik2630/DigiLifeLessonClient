@@ -100,3 +100,27 @@ export const fetchReports = async () => {
   const res = await fetch(`${baseUrl}/api/reports`, { cache: "no-store" });
   return res.json();
 }
+
+// top contributors
+export const getTopContributors = async () => {
+  try {
+    const res = await fetch(`${baseUrl}/api/top-contributors`, { cache: 'no-store' });
+    if (!res.ok) throw new Error("Failed to fetch top contributors");
+    return await res.json();
+  } catch (error) {
+    console.error(error);
+    return { success: false, data: [] };
+  }
+};
+
+// tMostSavedLessons
+export const getMostSavedLessons = async () => {
+  try {
+    const res = await fetch(`${baseUrl}/api/most-saved-lessons`, { cache: 'no-store' });
+    if (!res.ok) throw new Error("Failed to fetch most saved lessons");
+    return await res.json();
+  } catch (error) {
+    console.error(error);
+    return { success: false, data: [] };
+  }
+};
