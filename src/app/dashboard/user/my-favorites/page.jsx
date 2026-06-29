@@ -90,14 +90,14 @@ const MyFavoritePage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center text-slate-900 font-mono text-xs tracking-widest dark:bg-[#040712] dark:text-zinc-500">
+      <div className="min-h-screen bg-app-bg flex items-center justify-center text-app-text font-mono text-xs tracking-widest">
         LOADING COLLECTION...
       </div>
     );
   }
 
   return (
-    <div className="p-6 sm:p-10 min-h-screen bg-white text-slate-900 relative overflow-hidden dark:bg-[#040712] dark:text-zinc-100">
+    <div className="p-6 sm:p-10 min-h-screen bg-app-bg text-app-text relative overflow-hidden">
       {/* Background Subtle Ambient Glows */}
       <div className="absolute top-[-20%] right-[-10%] w-96 h-96 bg-purple-950/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-[-10%] left-[-5%] w-80 h-80 bg-fuchsia-950/5 rounded-full blur-[100px] pointer-events-none" />
@@ -109,10 +109,10 @@ const MyFavoritePage = () => {
             <FolderHeart className="w-5 h-5" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold tracking-tight text-zinc-100">
+            <h1 className="text-2xl font-bold tracking-tight text-app-text">
               Saved Collection
             </h1>
-            <p className="text-xs text-zinc-400 font-medium mt-1">
+            <p className="text-xs text-app-text/70 font-medium mt-1">
               Your personal index of wisdom. You have bookmarked{" "}
               <span className="text-purple-400 font-bold font-mono">
                 {favorites.length}
@@ -124,10 +124,10 @@ const MyFavoritePage = () => {
       </div>
 
       {/* Core Table Section */}
-      <div className="w-full overflow-x-auto rounded-[20px] border border-zinc-900 bg-[#090b14]/40 backdrop-blur-md relative z-10 shadow-2xl">
+      <div className="w-full overflow-x-auto rounded-[20px] border border-zinc-900 bg-app-bg/40 backdrop-blur-md relative z-10 shadow-2xl">
         <table className="w-full border-collapse">
           <thead>
-            <tr className="text-left text-zinc-500 uppercase text-[10px] tracking-widest border-b border-zinc-900 bg-[#0d101d]/60">
+            <tr className="text-left text-app-text/70 uppercase text-[10px] tracking-widest border-b border-zinc-900 bg-app-bg/70">
               <th className="p-5 font-bold">Wisdom Context</th>
               <th className="p-4 font-bold">Author</th>
               <th className="p-4 font-bold">Saved Date</th>
@@ -138,16 +138,16 @@ const MyFavoritePage = () => {
           {favorites.length === 0 ? (
             <tbody>
               <tr>
-                <td colSpan={4} className="p-16 text-center bg-[#090b14]/20">
+                <td colSpan={4} className="p-16 text-center bg-app-bg/20">
                   <div className="flex flex-col items-center justify-center space-y-3">
-                    <div className="p-3 bg-zinc-900/40 border border-zinc-800/60 rounded-full text-zinc-600">
+                    <div className="p-3 bg-zinc-900/40 border border-zinc-800/60 rounded-full text-app-text/60">
                       <Bookmark className="w-6 h-6" />
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-zinc-400">
+                      <p className="text-sm font-semibold text-app-text/70">
                         No favorites found.
                       </p>
-                      <p className="text-xs text-zinc-600 mt-1">
+                      <p className="text-xs text-app-text/60 mt-1">
                         Please add some lessons to your favorites list.
                       </p>
                     </div>
@@ -163,7 +163,7 @@ const MyFavoritePage = () => {
                 return (
                   <tr
                     key={fav._id}
-                    className="hover:bg-[#121626]/30 transition-colors group"
+                    className="hover:bg-app-bg/80 transition-colors group"
                   >
                     {/* COLUMN 1: IMAGE & TEXT BANNER */}
                     <td className="p-4 flex items-center gap-4 max-w-sm">
@@ -183,7 +183,7 @@ const MyFavoritePage = () => {
                           {fav.lessonDetails?.category || "Lesson"}
                         </span>
                         <p
-                          className="font-bold text-sm text-zinc-200 truncate"
+                          className="font-bold text-sm text-app-text truncate"
                           title={fav.lessonDetails?.title}
                         >
                           {fav.lessonDetails?.title || "Untitled Lesson"}
@@ -209,7 +209,7 @@ const MyFavoritePage = () => {
                             </span>
                           )}
                         </div>
-                        <span className="font-medium text-xs text-zinc-400">
+                        <span className="font-medium text-xs text-app-text/70">
                           {fav.lessonDetails?.userName || "Admin"}
                         </span>
                       </div>
@@ -217,7 +217,7 @@ const MyFavoritePage = () => {
 
                     {/* COLUMN 3: TIME BADGE */}
                     <td className="p-4">
-                      <span className="inline-flex items-center gap-1.5 text-[10px] font-mono font-medium text-zinc-400 bg-zinc-900/60 px-2.5 py-1 rounded-lg border border-zinc-850/40">
+                      <span className="inline-flex items-center gap-1.5 text-[10px] font-mono font-medium text-app-text/70 bg-app-bg/70 px-2.5 py-1 rounded-lg border border-zinc-850/40">
                         <span className="w-1 h-1 rounded-full bg-purple-500" />
                         {fav.createdAt
                           ? new Date(fav.createdAt).toLocaleDateString()
@@ -230,7 +230,7 @@ const MyFavoritePage = () => {
                       <div className="flex items-center gap-2.5 justify-end">
                         <Link
                           href={`/public-lessons`}
-                          className="p-2 bg-zinc-900/40 border border-zinc-800/50 text-zinc-400 hover:text-purple-400 hover:border-purple-900/50 rounded-xl transition-all shadow-sm"
+                          className="p-2 bg-app-bg/70 border border-zinc-800/50 text-app-text/70 hover:text-purple-400 hover:border-purple-900/50 rounded-xl transition-all shadow-sm"
                           title="View Lesson"
                         >
                           <ArrowRight className="w-3.5 h-3.5" />
@@ -239,7 +239,7 @@ const MyFavoritePage = () => {
                        
                         <Button
                           onClick={() => handleDeleteFavorite(targetLessonId)}
-                          className="p-2 bg-zinc-900/40 border border-zinc-800 text-zinc-500 hover:text-rose-400 hover:border-rose-950 rounded-xl transition-all shadow-sm"
+                          className="p-2 bg-app-bg/70 border border-zinc-800 text-app-text/80 hover:text-rose-400 hover:border-rose-950 rounded-xl transition-all shadow-sm"
                           title="Remove from favorites"
                         >
                           <Trash2 className="w-3.5 h-3.5" />

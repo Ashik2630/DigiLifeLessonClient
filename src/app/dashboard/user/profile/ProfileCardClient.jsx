@@ -17,6 +17,8 @@ import {
   Edit2,
   ExternalLink,
   Loader2,
+  Copy,
+  Clipboard,
 } from "lucide-react";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -157,6 +159,85 @@ const ProfileCardClient = () => {
     setTempName(session?.user?.name || "");
     setTempImage(session?.user?.image || "");
     setIsEditing(true);
+  };
+
+  const handleCopyProfile = async () => {
+    if (!session?.user) {
+      toast.error("No profile available to copy.");
+      return;
+    }
+
+    const payload = {
+      name: session.user.name || "",
+      email: session.user.email || "",
+      image: session.user.image || "",
+    };
+
+    try {
+      await navigator.clipboard.writeText(JSON.stringify(payload, null, 2));
+      toast.success("Profile copied to clipboard.");
+    } catch (error) {
+      console.error("Copy failed", error);
+      toast.error("Unable to copy profile to clipboard.");
+    }
+  };
+
+  const handlePasteProfile = async () => {
+    if (!navigator.clipboard) {
+      toast.error("Clipboard access is not supported in this browser.");
+      return;
+    }
+
+    try {
+      const text = await navigator.clipboard.readText();
+      if (!text) {
+        toast.error("Clipboard is empty.");
+        return;
+      }
+
+      let parsed = null;
+      let name = "";
+      let image = "";
+
+      try {
+        parsed = JSON.parse(text);
+      } catch (_error) {
+        parsed = null;
+      }
+
+      if (parsed && typeof parsed === "object") {
+        name = parsed.name || parsed.fullName || parsed.username || parsed.displayName || "";
+        image = parsed.image || parsed.avatar || parsed.photo || "";
+      }
+
+      if (!name && text.includes("\n")) {
+        const lines = text.split(/\r?\n/);
+        lines.forEach((line) => {
+          const [key, value] = line.split(/:\s*/);
+          if (!value) return;
+          const normalized = key.trim().toLowerCase();
+          if (normalized.includes("name")) name = value.trim();
+          if (normalized.includes("image") || normalized.includes("avatar") || normalized.includes("photo")) image = value.trim();
+        });
+      }
+
+      if (!name) {
+        name = text.trim();
+      }
+
+      if (!name) {
+        toast.error("No valid profile information found in clipboard.");
+        return;
+      }
+
+      setTempName(name);
+      if (image) setTempImage(image);
+      setIsEditing(true);
+      toast.success("Profile pasted from clipboard.");
+    } catch (error) {
+      console.error("Paste failed", error);
+      toast.error("Unable to paste profile from clipboard.");
+    }
   };
 
   // ২. ডাটাবেজে ডাটা সেভ এবং সেশন আপডেট করার মূল লজিক
@@ -412,6 +493,7 @@ const ProfileCardClient = () => {
                   disabled={isSubmitting}
                   onPress={() => setIsEditing(false)}
                   className="bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 rounded-xl"
+                  title="Cancel"
                 >
                   <X width={18} height={18} />
                 </Button>
@@ -421,6 +503,7 @@ const ProfileCardClient = () => {
                   disabled={isSubmitting}
                   onPress={handleSaveChanges}
                   className="bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl shadow-emerald-500/30"
+                  title="Save Changes"
                 >
                   {isSubmitting ? (
                     <Loader2 width={18} height={18} className="animate-spin" />
@@ -430,13 +513,35 @@ const ProfileCardClient = () => {
                 </Button>
               </div>
             ) : (
-              <Button
-                onPress={handleStartEdit}
-                className="bg-zinc-800 hover:bg-zinc-700 text-white font-medium px-5 py-2 rounded-xl flex items-center gap-2 border border-zinc-700 transition-all shadow-lg"
-              >
-                <Edit2 width={14} height={14} />
-                Edit Profile
-              </Button>
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+                <Button
+                  onPress={handleStartEdit}
+                  className="bg-zinc-800 hover:bg-zinc-700 text-white font-medium px-5 py-2 rounded-xl flex items-center gap-2 border border-zinc-700 transition-all shadow-lg"
+                >
+                  <Edit2 width={14} height={14} />
+                  Edit Profile
+                </Button>
+                <div className="flex items-center gap-2">
+                  <Button
+                    isIconOnly
+                    variant="flat"
+                    onPress={handleCopyProfile}
+                    className="bg-zinc-900/80 hover:bg-zinc-800 text-zinc-100 rounded-xl border border-zinc-700"
+                    title="Copy profile JSON"
+                  >
+                    <Copy width={18} height={18} />
+                  </Button>
+                  <Button
+                    isIconOnly
+                    variant="flat"
+                    onPress={handlePasteProfile}
+                    className="bg-zinc-900/80 hover:bg-zinc-800 text-zinc-100 rounded-xl border border-zinc-700"
+                    title="Paste profile from clipboard"
+                  >
+                    <Clipboard width={18} height={18} />
+                  </Button>
+                </div>
+              </div>
             )}
           </div>
         </div>

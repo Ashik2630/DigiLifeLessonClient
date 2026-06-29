@@ -41,7 +41,7 @@ const MyLessonPage = async () => {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div className="flex items-start gap-4">
             <div>
-              <h1 className="text-3xl font-bold text-zinc-100 tracking-tight">
+              <h1 className="text-3xl font-bold  text-app-text tracking-tight">
                 My Contributions
               </h1>
               <p className="text-sm text-zinc-400 mt-1 font-normal">
@@ -57,7 +57,7 @@ const MyLessonPage = async () => {
           <Link href="/dashboard/user/add-lesson" passHref>
             <Button
               color="default"
-              className="bg-[#0e1b12] hover:bg-[#14291b] text-zinc-100 font-medium text-sm px-5 py-5 rounded-xl flex items-center gap-2 border border-emerald-900/40 transition-all duration-300"
+              className="bg-app-bg text-app-text font-medium text-sm px-5 py-5 rounded-xl flex items-center gap-2 border border-emerald-900/40 transition-all duration-300"
             >
               <Plus width={16} height={16} className="text-emerald-400" />
               Write New Lesson
@@ -66,10 +66,10 @@ const MyLessonPage = async () => {
         </div>
         <hr className="mb-8" />
         {/* Dynamic Inner Table Design (As seen in image_a15e1a) */}
-        <div className="w-full bg-[#070b16]/60 border border-zinc-900/80 rounded-2xl overflow-hidden backdrop-blur-md">
+        <div className="w-full border-app-bg text-app-text rounded-2xl overflow-hidden backdrop-blur-md">
           {/* Table Headers */}
           {lessonsList.length > 0 && (
-            <div className="hidden md:flex items-center justify-between px-8 py-5 text-[10px] font-bold tracking-widest uppercase text-zinc-500 border-b border-zinc-900 bg-zinc-950/20 w-full rounded-t-xl">
+            <div className="hidden md:flex items-center justify-between px-8 py-5 text-[10px] font-bold tracking-widest uppercase bg-app-bg text-app-text w-full rounded-t-xl">
               <div className="flex-1 min-w-75">Lesson Details</div>
 
               <div className="w-28 text-center mr-8">Status</div>
@@ -86,7 +86,7 @@ const MyLessonPage = async () => {
           <div className="w-full division-y division-zinc-900">
             {lessonsList.length === 0 ? (
               <div className="text-center py-28">
-                <p className="text-zinc-500 font-medium text-sm">
+                <p className="text-app-text font-medium text-sm">
                   You haven&apos;t added any lessons to your vault yet.
                 </p>
               </div>
@@ -94,7 +94,7 @@ const MyLessonPage = async () => {
               lessonsList.map((lesson, index) => {
                 const currentToneStyle =
                   toneStyles[lesson?.emotionalTone] ||
-                  "border-zinc-800 text-zinc-400 bg-zinc-900/30";
+                  "bg-app-bg text-app-text ";
 
                 return (
                   <div
@@ -120,7 +120,7 @@ const MyLessonPage = async () => {
                         <span className="text-[10px] font-bold tracking-widest uppercase text-purple-400">
                           {lesson?.category || "General"}
                         </span>
-                        <h3 className="text-sm font-bold text-zinc-100 tracking-wide line-clamp-1 hover:text-purple-400 transition-colors cursor-pointer">
+                        <h3 className="text-sm font-bold text-app-text tracking-wide line-clamp-1 hover:text-purple-400 transition-colors cursor-pointer">
                           {lesson?.title || "Untitled Lesson"}
                         </h3>
                       </div>
@@ -128,7 +128,7 @@ const MyLessonPage = async () => {
 
                     {/* Status Column */}
                     <div className="flex items-center min-w-30 md:justify-center">
-                      <span className="text-xs text-zinc-400 font-medium px-2.5 py-1 rounded-lg bg-zinc-900/40 border border-zinc-800/40">
+                      <span className="text-xs text-app-text font-medium px-2.5 py-1 rounded-lg  ">
                         {lesson?.accessLevel || "Premium"}
                       </span>
                     </div>
@@ -159,9 +159,9 @@ const MyLessonPage = async () => {
                     </div>
 
                     {/* Published Date Column */}
-                    <div className="flex items-center min-w-35 md:justify-center text-xs text-zinc-400/80 font-medium">
-                      <div className="flex items-center gap-2 px-3 py-1 bg-zinc-900/30 border border-zinc-800/40 rounded-full text-[11px]">
-                        <span className="w-1.5 h-1.5 rounded-full bg-purple-500 inline-block animate-pulse" />
+                    <div className="flex items-center min-w-35 md:justify-center text-xs text-app-text font-medium">
+                      <div className="flex items-center gap-2 px-3 py-1   rounded-full text-[11px]">
+                        <span className="w-1.5 h-1.5 rounded-full  text-app-text inline-block animate-pulse" />
                         {lesson?.createdAt
                           ? new Date(lesson.createdAt).toLocaleDateString(
                               "en-US",
@@ -185,7 +185,7 @@ const MyLessonPage = async () => {
                           isIconOnly
                           variant="light"
                           size="sm"
-                          className="text-zinc-400 hover:text-purple-400 hover:bg-zinc-900 border border-zinc-900 hover:border-zinc-800 rounded-lg w-8 h-8 min-w-8 p-0 transition-all duration-200"
+                          className="text-zinc-400 hover:text-purple-400 hover: bg-app-bg hover:border-zinc-800 rounded-lg w-8 h-8 min-w-8 p-0 transition-all duration-200"
                         >
                           <Pencil width={13} height={13} />
                         </Button>

@@ -74,7 +74,7 @@ const DeleteLessonButton = ({ lessonId }) => {
         variant="light"
         size="sm"
         onClick={handleDelete}
-        className="text-zinc-400 hover:text-rose-400 hover:bg-zinc-900 border border-zinc-900 hover:border-zinc-800 rounded-lg w-8 h-8 min-w-8 p-0 transition-all duration-200"
+        className="text-zinc-400 hover:text-rose-400 hover: bg-app-bg   hover:border-zinc-800 rounded-lg w-8 h-8 min-w-8 p-0 transition-all duration-200"
         aria-label="Delete lesson"
       >
         <TrashBin width={13} height={13} />
