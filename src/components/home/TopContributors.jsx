@@ -9,7 +9,7 @@ export default function TopContributors({ contributors }) {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: { staggerChildren: 0.15 } // প্রতিটি কার্ড একটু গ্যাপ দিয়ে আসবে
+      transition: { staggerChildren: 0.15 } 
     }
   };
 
@@ -46,15 +46,15 @@ export default function TopContributors({ contributors }) {
               key={user._id}
               variants={cardVariants}
               whileHover={{ y: -5, scale: 1.02, borderColor: "rgba(124, 58, 237, 0.4)" }}
-              className="bg-[#090b14]/50 backdrop-blur-md border border-zinc-900 p-5 rounded-[20px] flex flex-col items-center text-center relative transition-all group"
+              className="bg-app-bg backdrop-blur-md border border-zinc-900 p-5 rounded-[20px] flex flex-col items-center text-center relative transition-all group"
             >
               {/* Badge Rank */}
-              <span className="absolute top-3 left-3 bg-zinc-900 text-purple-400 font-mono text-[10px] px-2 py-0.5 rounded-full border border-zinc-800">
+              <span className="absolute top-3 left-3   bg-app-bg text-app-text font-mono text-[10px] px-2 py-0.5 rounded-full border border-zinc-800">
                 #{index + 1}
               </span>
 
               {/* User Avatar */}
-              <div className="w-16 h-16 rounded-full p-0.5 border border-purple-500/30 bg-purple-950/20 mb-3 overflow-hidden">
+              <div className="w-16 h-16 rounded-full p-0.5 border  bg-app-bg mb-3 overflow-hidden">
                 {user.userImage ? (
                   <img src={user.userImage} alt={user.userName} className="w-full h-full object-cover rounded-full" />
                 ) : (
@@ -65,13 +65,13 @@ export default function TopContributors({ contributors }) {
               </div>
 
               {/* User Details */}
-              <h3 className="font-bold text-sm text-zinc-200 truncate w-full" title={user.userName}>
+              <h3 className="font-bold text-sm text-app-text  truncate w-full" title={user.userName}>
                 {user.userName || "Contributor"}
               </h3>
-              <p className="text-[11px] text-zinc-500 truncate w-full mb-4">{user._id}</p>
+              <p className="text-[11px] text-app-text  truncate w-full mb-4">{user._id}</p>
 
               {/* Lessons Contributed Count */}
-              <div className="mt-auto flex items-center gap-1.5 text-xs text-purple-400 bg-purple-950/20 border border-purple-900/30 px-3 py-1 rounded-xl font-mono">
+              <div className="mt-auto flex items-center gap-1.5 text-xs  bg-app-bg text-app-text border border-purple-900/30 px-3 py-1 rounded-xl font-mono">
                 <BookOpen className="w-3.5 h-3.5" />
                 <span>{user.lessonCount} Lessons</span>
               </div>

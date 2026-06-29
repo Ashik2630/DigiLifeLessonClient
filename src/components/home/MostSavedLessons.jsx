@@ -45,7 +45,7 @@ export default function MostSavedLessons({ mostSavedLessons = [] }) {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -4 }}
-                className="bg-[#090b14]/40 backdrop-blur-md border rounded-[22px] overflow-hidden flex flex-col group hover:shadow-2xl hover:border-zinc-900 transition-all"
+                className="bg-app-bg backdrop-blur-md border rounded-[22px] overflow-hidden flex flex-col group hover:shadow-2xl hover:border-zinc-900 transition-all"
               >
                 {/* Image Banner */}
                 <div className="h-40 w-full bg-zinc-900 overflow-hidden relative">
@@ -55,18 +55,18 @@ export default function MostSavedLessons({ mostSavedLessons = [] }) {
                     <div className="w-full h-full flex items-center justify-center text-zinc-600 text-3xl">📄</div>
                   )}
                   {/* Saved Count Badge */}
-                  <span className="absolute top-3 right-3 inline-flex items-center gap-1 text-[10px] font-mono font-bold bg-[#040712]/80 text-fuchsia-400 backdrop-blur-sm px-2.5 py-1 rounded-xl border border-fuchsia-950">
-                    <Bookmark className="w-3 h-3 fill-fuchsia-400" />
+                  <span className="absolute top-3 right-3 inline-flex items-center gap-1 text-[10px] font-mono font-bold bg-app-bg text-app-text  backdrop-blur-sm px-2.5 py-1 rounded-xl border border-fuchsia-950">
+                    <Bookmark className="w-3 h-3 fill-white-400" />
                     {item?.savedCount ?? 0} Saves
                   </span>
                 </div>
 
                 {/* Content Details */}
                 <div className="p-5 flex flex-col grow">
-                  <span className="text-[9px] font-bold text-fuchsia-400 uppercase tracking-widest block mb-1">
+                  <span className="text-[9px] font-bold text-app-text  uppercase tracking-widest block mb-1">
                     {category}
                   </span>
-                  <h3 className="font-bold text-sm text-zinc-200 line-clamp-2 mb-3 group-hover:text-zinc-100 min-h-10">
+                  <h3 className="font-bold text-sm text-app-text  line-clamp-2 mb-3 group-hover:text-zinc-100 min-h-10">
                     {title}
                   </h3>
 
@@ -81,7 +81,7 @@ export default function MostSavedLessons({ mostSavedLessons = [] }) {
                     
                     <Link 
                       href={`/public-lessons/${lessonId}`}
-                      className="p-1.5 bg-zinc-900/60 text-zinc-400 group-hover:text-fuchsia-400 group-hover:bg-fuchsia-950/30 rounded-lg border border-zinc-850 group-hover:border-fuchsia-900/50 transition-all"
+                      className="p-1.5 bg-app-bg text-app-text  group-hover:text-fuchsia-400 group-hover:bg-fuchsia-950/30 rounded-lg border border-zinc-850 group-hover:border-fuchsia-900/50 transition-all"
                     >
                       <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
