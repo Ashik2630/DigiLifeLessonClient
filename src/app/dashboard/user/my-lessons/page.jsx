@@ -31,7 +31,7 @@ const MyLessonPage = async () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#040610] text-zinc-100 p-6 sm:p-12 font-sans relative overflow-hidden">
+    <div className="min-h-screen bg-white text-slate-900 p-6 sm:p-12 font-sans relative overflow-hidden dark:bg-[#040610] dark:text-zinc-100">
       {/* Background Orbs */}
       <div className="absolute top-[-10%] left-[-10%] w-125 h-125 bg-purple-900/5 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-[-10%] right-[-10%] w-125 h-125 bg-cyan-900/5 rounded-full blur-[140px] pointer-events-none" />

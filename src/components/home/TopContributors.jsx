@@ -19,7 +19,7 @@ export default function TopContributors({ contributors }) {
   };
 
   return (
-    <section className="py-12 bg-[#040712] text-zinc-100 relative overflow-hidden">
+    <section className="py-12 bg-app-bg text-app-text relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
         
         {/* Section Title */}

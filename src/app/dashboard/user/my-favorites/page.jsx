@@ -90,14 +90,14 @@ const MyFavoritePage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#040712] flex items-center justify-center text-zinc-500 font-mono text-xs tracking-widest">
+      <div className="min-h-screen bg-white flex items-center justify-center text-slate-900 font-mono text-xs tracking-widest dark:bg-[#040712] dark:text-zinc-500">
         LOADING COLLECTION...
       </div>
     );
   }
 
   return (
-    <div className="p-6 sm:p-10 min-h-screen bg-[#040712] text-zinc-100 relative overflow-hidden">
+    <div className="p-6 sm:p-10 min-h-screen bg-white text-slate-900 relative overflow-hidden dark:bg-[#040712] dark:text-zinc-100">
       {/* Background Subtle Ambient Glows */}
       <div className="absolute top-[-20%] right-[-10%] w-96 h-96 bg-purple-950/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-[-10%] left-[-5%] w-80 h-80 bg-fuchsia-950/5 rounded-full blur-[100px] pointer-events-none" />

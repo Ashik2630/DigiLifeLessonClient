@@ -161,7 +161,7 @@ export default function EditLessonForm({ lesson }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="space-y-6 bg-[#0b1220] border border-zinc-800 rounded-3xl p-6 shadow-sm"
+      className="space-y-6 bg-white dark:bg-[#0b1220] border border-zinc-200 dark:border-zinc-800 rounded-3xl p-6 shadow-sm"
     >
       <div className="space-y-3">
         <div className="flex items-center justify-between gap-4">
@@ -190,7 +190,7 @@ export default function EditLessonForm({ lesson }) {
             Lesson Feature Image
           </span>
 
-          <div className="relative w-full h-52 rounded-2xl overflow-hidden border border-zinc-800 bg-[#070b14] flex flex-col items-center justify-center p-4 text-center group cursor-pointer transition hover:border-zinc-700">
+            <div className="relative w-full h-52 rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#070b14] flex flex-col items-center justify-center p-4 text-center group cursor-pointer transition hover:border-zinc-300 dark:hover:border-zinc-700">
             {imageUrl ? (
               <img
                 src={imageUrl}
@@ -231,7 +231,7 @@ export default function EditLessonForm({ lesson }) {
           <input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="mt-2 w-full rounded-2xl border border-zinc-800 bg-[#070b14] px-4 py-3 text-sm text-zinc-100 outline-none transition focus:border-purple-500"
+            className="mt-2 w-full rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#070b14] px-4 py-3 text-sm text-foreground dark:text-zinc-100 outline-none transition focus:border-purple-500"
             placeholder="Lesson title"
           />
         </label>
@@ -241,7 +241,7 @@ export default function EditLessonForm({ lesson }) {
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="mt-2 w-full rounded-2xl border border-zinc-800 bg-[#070b14] px-4 py-3 text-sm text-zinc-100 outline-none focus:border-purple-500"
+            className="mt-2 w-full rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#070b14] px-4 py-3 text-sm text-foreground dark:text-zinc-100 outline-none focus:border-purple-500"
           >
             {categories.map((item) => (
               <option key={item} value={item}>
@@ -258,7 +258,7 @@ export default function EditLessonForm({ lesson }) {
           <select
             value={emotionalTone}
             onChange={(e) => setEmotionalTone(e.target.value)}
-            className="mt-2 w-full rounded-2xl border border-zinc-800 bg-[#070b14] px-4 py-3 text-sm text-zinc-100 outline-none focus:border-purple-500"
+            className="mt-2 w-full rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#070b14] px-4 py-3 text-sm text-foreground dark:text-zinc-100 outline-none focus:border-purple-500"
           >
             {emotionalTones.map((tone) => (
               <option key={tone} value={tone}>
@@ -290,7 +290,7 @@ export default function EditLessonForm({ lesson }) {
           value={shortDescription}
           onChange={(e) => setShortDescription(e.target.value)}
           rows={6}
-          className="mt-2 w-full rounded-3xl border border-zinc-800 bg-[#070b14] px-4 py-4 text-sm text-zinc-100 outline-none resize-none transition focus:border-purple-500"
+          className="mt-2 w-full rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#070b14] px-4 py-4 text-sm text-foreground dark:text-zinc-100 outline-none resize-none transition focus:border-purple-500"
           placeholder="Write your lesson here..."
         />
       </label>
@@ -300,7 +300,7 @@ export default function EditLessonForm({ lesson }) {
           type="button"
           variant="secondary"
           size="sm"
-          className="w-full sm:w-auto rounded-2xl border border-zinc-700 bg-zinc-900 text-zinc-200 hover:bg-zinc-800"
+          className="w-full sm:w-auto rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-foreground dark:text-zinc-200 hover:bg-default-50"
           onClick={() => router.push("/dashboard/user/my-lessons")}
         >
           Back

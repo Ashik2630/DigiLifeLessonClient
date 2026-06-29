@@ -228,7 +228,7 @@ export default function AddLessonPage() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-[#09090b] text-zinc-100 flex items-center justify-center p-4 md:p-8 font-sans antialiased selection:bg-purple-500/30 relative">
+    <div className="w-full min-h-screen bg-white text-slate-900 flex items-center justify-center p-4 md:p-8 font-sans antialiased selection:bg-purple-500/30 relative dark:bg-[#09090b] dark:text-zinc-100">
       {/* Background Neon Glows */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none" />

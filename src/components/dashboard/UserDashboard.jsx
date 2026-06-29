@@ -174,7 +174,7 @@ export default function UserDashboard(
           </div>
 
           {/* Quick Actions Dark Card Box */}
-          <div className="rounded-2xl bg-linear-to-br from-slate-900 via-zinc-900 to-neutral-950 p-6 text-white shadow-xl dark:shadow-none flex flex-col justify-between gap-6">
+          <div className="rounded-2xl bg-white dark:bg-linear-to-br dark:from-slate-900 dark:via-zinc-900 dark:to-neutral-950 p-6 text-zinc-900 dark:text-white shadow-xl dark:shadow-none flex flex-col justify-between gap-6">
             <div>
               <h3 className="font-bold text-lg tracking-tight mb-4 text-zinc-100">
                 Quick Actions

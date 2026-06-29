@@ -12,7 +12,7 @@ const UnauthorizedPage = () => {
   const dashboardHref = userRole === "admin" ? "/dashboard/admin" : "/dashboard/user";
 
   return (
-    <div className="min-h-screen bg-[#040712] text-zinc-100 flex flex-col items-center justify-center p-6 relative overflow-hidden">
+    <div className="min-h-screen bg-white text-slate-900 flex flex-col items-center justify-center p-6 relative overflow-hidden dark:bg-[#040712] dark:text-zinc-100">
       
       {/* Background Subtle Ambient Glows - Matching your brand layout */}
       <div className="absolute top-[-20%] right-[-10%] w-96 h-96 bg-purple-950/20 rounded-full blur-[140px] pointer-events-none" />

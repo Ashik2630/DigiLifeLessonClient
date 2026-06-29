@@ -144,7 +144,7 @@ const ProfileCardClient = () => {
 
   if (isPending) {
     return (
-      <div className="w-full flex items-center justify-center py-20 min-h-screen bg-[#0d0e12]">
+      <div className="w-full flex items-center justify-center py-20 min-h-screen bg-white text-slate-900 dark:bg-[#0d0e12] dark:text-zinc-300">
         <div className="animate-pulse flex flex-col items-center gap-4">
           <div className="w-24 h-24 rounded-full bg-zinc-800"></div>
           <div className="h-6 w-32 bg-zinc-800 rounded"></div>
@@ -217,7 +217,7 @@ const ProfileCardClient = () => {
   };
 
   return (
-    <div className="w-full min-h-screen bg-[#0d0e12] text-zinc-300 pb-20 font-sans selection:bg-purple-500/30">
+    <div className="w-full min-h-screen bg-white text-slate-900 pb-20 font-sans selection:bg-purple-500/30 dark:bg-[#0d0e12] dark:text-zinc-300">
       <Toaster
         position="top-right"
         toastOptions={{

@@ -13,7 +13,7 @@ export default function MostSavedLessons({ mostSavedLessons = [] }) {
   }
 
   return (
-    <section className="py-12 bg-[#040712] text-zinc-100 relative overflow-hidden">
+    <section className="py-12 bg-app-bg text-app-text relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
 
         {/* Section Title */}
@@ -45,7 +45,7 @@ export default function MostSavedLessons({ mostSavedLessons = [] }) {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -4 }}
-                className="bg-[#090b14]/40 backdrop-blur-md border border-zinc-950 rounded-[22px] overflow-hidden flex flex-col group hover:shadow-2xl hover:border-zinc-900 transition-all"
+                className="bg-[#090b14]/40 backdrop-blur-md border rounded-[22px] overflow-hidden flex flex-col group hover:shadow-2xl hover:border-zinc-900 transition-all"
               >
                 {/* Image Banner */}
                 <div className="h-40 w-full bg-zinc-900 overflow-hidden relative">
