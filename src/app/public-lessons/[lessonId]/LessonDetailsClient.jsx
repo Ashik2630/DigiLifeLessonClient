@@ -8,7 +8,7 @@ import Link from "next/link";
 import { useSession } from "@/lib/auth-client";
 import { Button } from "@heroui/react";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "";
 
 const LessonDetailsClient = ({ lesson }) => {
   const {
@@ -187,11 +187,16 @@ useEffect(() => {
         body: JSON.stringify({
           lessonId: lesson._id,
           userId: currentUser?.id || null,
+          userEmail: currentUser?.email || null,
           reason: reportReason,
           createdAt: new Date(),
         }),
       });
-      if (!res.ok) throw new Error("Report failed");
+      const responseBody = await res.json().catch(() => null);
+      if (!res.ok) {
+        const message = responseBody?.message || "Report failed";
+        throw new Error(message);
+      }
       setShowReportModal(false);
       setReportReason("");
     } catch (err) {
